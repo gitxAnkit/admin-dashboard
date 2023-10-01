@@ -1,0 +1,23 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    .contact{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        img{
+            width: 30px;
+            height: 30px;
+        }
+        span{
+            font-weight: bold;
+        }
+    
+    }
+    span{
+        font-size: 14px;
+    }
+    
+}
