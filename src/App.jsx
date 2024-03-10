@@ -10,11 +10,13 @@ import Footer from './Components/footer/Footer';
 import Menu from './Components/menu/Menu';
 import Navbar from './Components/navbar/Navbar';
 import Login from './pages/login/Login';
+import User from './Components/user/User'
+import Product from './Components/product/Product'
 
-const Layout =()=>{
+const Layout = () => {
   return (
     <div className="main">
-      <Navbar/>
+      <Navbar />
       <div className="container">
         <div className="menuContainer">
           <Menu />
@@ -23,7 +25,7 @@ const Layout =()=>{
           <Outlet />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
@@ -32,9 +34,9 @@ const App = () => {
 
   const router = createBrowserRouter([
     {
-      path:"/",
-      element: <Layout/>,
-      children:[
+      path: "/",
+      element: <Layout />,
+      children: [
         {
           path: "/",
           element: <Home />,
@@ -47,17 +49,26 @@ const App = () => {
           path: "/products",
           element: <Products />,
         },
+        {
+          path: "/products/:id",
+          element: <Product />,
+        },
+        {
+          path: "/users/:id",
+          element: <User />,
+        },
+
       ],
     },
     {
-      path:"/login",
-      element:<Login />
+      path: "/login",
+      element: <Login />
     }
 
-  ]); 
+  ]);
 
 
-  return  <RouterProvider router={router}/> ;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
