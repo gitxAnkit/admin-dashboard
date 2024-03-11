@@ -59,10 +59,10 @@ const Products = () => {
   return (
     <div className='products'>
       <div className="info">
-        <h1>Users</h1>
+        <h1>Products</h1>
         <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={products} />
+      <DataTable slug="products" columns={columns} rows={products} />
       {open && <Add setOpen={setOpen} columns={columns} />}
     </div>
   )
