@@ -6,6 +6,10 @@ This project is an admin dashboard application built using React.js. It provides
 
 You can view the live demo of this admin dashboard project [here](https://admin-dashboard-6jcq.vercel.app/).
 
+## Screen shot
+
+![Admin Dasbboard](image.png "Homepage screenshot")
+
 ## Features
 -CRUD operation for admin
 
