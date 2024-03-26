@@ -69,10 +69,15 @@ const Products = () => {
         <h1>Products</h1>
         <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
+<<<<<<< HEAD
       {isLoading ?
         ("Loading...") :
         (<DataTable slug="product" columns={columns} rows={data} />)}
       {open && <Add slug={"product"} setOpen={setOpen} columns={columns} />}
+=======
+      <DataTable slug="products" columns={columns} rows={products} />
+      {open && <Add setOpen={setOpen} columns={columns} />}
+>>>>>>> 34b532589eeb691494687d82ea2901e027c3f027
     </div>
   )
 }
