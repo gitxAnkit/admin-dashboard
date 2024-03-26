@@ -3,6 +3,7 @@ import './Products.scss';
 import DataTable from '../../Components/dataTable/DataTable';
 import Add from '../../Components/add/Add';
 import { products } from '../../data';
+import { useQuery } from '@tanstack/react-query';
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -55,15 +56,23 @@ const columns = [
 
 const Products = () => {
   const [open, setOpen] = useState(false);
-
+  const { isLoading, data } = useQuery({
+    queryKey: ['allproducts'],
+    queryFn: () =>
+      fetch('http://localhost:3000/api/products').then((res) =>
+        res.json(),
+      ),
+  })
   return (
     <div className='products'>
       <div className="info">
-        <h1>Users</h1>
+        <h1>Products</h1>
         <button onClick={() => setOpen(true)}>Add New Products</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={products} />
-      {open && <Add setOpen={setOpen} columns={columns} />}
+      {isLoading ?
+        ("Loading...") :
+        (<DataTable slug="product" columns={columns} rows={data} />)}
+      {open && <Add slug={"product"} setOpen={setOpen} columns={columns} />}
     </div>
   )
 }

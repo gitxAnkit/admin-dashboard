@@ -3,6 +3,7 @@ import './Users.scss';
 import DataTable from '../../Components/dataTable/DataTable';
 import { userRows } from '../../data';
 import Add from '../../Components/add/Add';
+import { useQuery } from '@tanstack/react-query';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -66,15 +67,23 @@ const columns = [
 const Users = () => {
 
   const [open, setOpen] = useState(false);
-
+  const { isLoading, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+      fetch('http://localhost:3000/api/users').then((res) =>
+        res.json(),
+      ),
+  })
   return (
     <div className='users'>
       <div className="info">
         <h1>Users</h1>
         <button onClick={() => setOpen(true)}>Add New Users</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={userRows} />
-      {open && <Add setOpen={setOpen} columns={columns} />}
+      {isLoading ?
+        ("Loading...") :
+        (<DataTable slug="user" columns={columns} rows={data} />)}
+      {open && <Add slug="user" setOpen={setOpen} columns={columns} />}
     </div>
   )
 }

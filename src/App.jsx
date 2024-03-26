@@ -12,7 +12,10 @@ import Navbar from './Components/navbar/Navbar';
 import Login from './pages/login/Login';
 import User from './Components/user/User'
 import Product from './Components/product/Product'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+
+const queryClient = new QueryClient();
 const Layout = () => {
   return (
     <div className="main">
@@ -22,14 +25,15 @@ const Layout = () => {
           <Menu />
         </div>
         <div className="contentContainer">
-          <Outlet />
+          <QueryClientProvider client={queryClient}>
+            <Outlet />
+          </QueryClientProvider>
         </div>
       </div>
       <Footer />
     </div>
   )
 }
-
 const App = () => {
 
   const router = createBrowserRouter([
