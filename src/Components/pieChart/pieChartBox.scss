@@ -1,10 +1,19 @@
-.pieChartBox{
+@import "../../styles/responsive.scss";
+
+
+.pieChartBox {
     height: 100%;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .chart{
+    h1 {
+        @include xxl {
+            font-size: 24px;
+        }
+    }
+
+    .chart {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -12,27 +21,28 @@
         width: 100%;
     }
 
-    .options{
+    .options {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 10px;
         font-size: 14px;
 
-        .option{
+        .option {
             display: flex;
             flex-direction: column;
             gap: 10px;
             align-items: center;
-            
-            .title{
+
+            .title {
                 display: flex;
                 gap: 10px;
                 align-items: center;
-                .dot{
+
+                .dot {
                     width: 10px;
                     height: 10px;
-                    border-radius: 50% ;
+                    border-radius: 50%;
                 }
             }
         }

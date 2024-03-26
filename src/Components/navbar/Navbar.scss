@@ -1,23 +1,29 @@
-.navbar{
+@import "../../styles/responsive.scss";
+
+
+.navbar {
     width: 100%;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    .logo{
+
+    .logo {
         display: flex;
         align-items: center;
         font-weight: bold;
         gap: 10px;
     }
-   .icons{
-        .notification{
+
+    .icons {
+        .notification {
             position: relative;
-            span{
+
+            span {
                 background-color: red;
                 border-radius: 50%;
                 width: 15px;
                 height: 15px;
-                position:absolute;
+                position: absolute;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -26,18 +32,27 @@
                 font-size: 12px;
             }
         }
+
+        .icon {
+            @include sm {
+                display: none;
+            }
+        }
+
         display: flex;
         align-items: center;
         gap: 20px;
-     .user{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        img{
-            width:26%;
-            height: 26%;
-            border-radius: 50%;
-            object-fit: cover;
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 26%;
+                height: 26%;
+                border-radius: 50%;
+                object-fit: cover;
             }
         }
     }
