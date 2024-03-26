@@ -22,41 +22,35 @@ const Single = (props) => {
                     </div>
 
                     <hr />
-
-                    <div className="chart">
-
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart
-                                width={500}
-                                height={300}
-                                data={data}
-                                margin={{
-                                    top: 5,
-                                    right: 30,
-                                    left: 20,
-                                    bottom: 5,
-                                }}
-                            >
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line
-                                    type="monotone"
-                                    dataKey="pv"
-                                    stroke="#8884d8"
-                                    activeDot={{ r: 8 }}
-                                />
-
-                                <Line type="monotone"
-                                    dataKey="uv"
-                                    stroke="#82ca9d"
-                                />
-                            </LineChart>
-                        </ResponsiveContainer>
-
-                    </div>
-                )}
+                    {props.chart && (
+                        <div className="chart">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <LineChart
+                                    width={500}
+                                    height={300}
+                                    data={props.chart.data}
+                                    margin={{
+                                        top: 5,
+                                        right: 30,
+                                        left: 20,
+                                        bottom: 5,
+                                    }}
+                                >
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    {props.chart.dataKeys.map((dataKey) => (
+                                        <Line
+                                            type="monotone"
+                                            dataKey={dataKey.name}
+                                            stroke={dataKey.color}
+                                        />
+                                    ))}
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
+                    )}
                 </div>
                 <div className="activities">
                     <h2>Latest Activities</h2>
